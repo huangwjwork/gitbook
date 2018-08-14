@@ -349,10 +349,87 @@ livenessProbe：
 * nodeSelector 通过label键值对选择node
 
   ```yaml
-  
+  selector:
+      name: frontend
   ```
 
-  
-
 * nodeAffinity
+
+  selector升级版，添加了in，noting，exists，doesnotexist，gt，lt等操作符
+
+  * RequiredDuringSchedulingRequiredExection：类似于nodeselector，node不满足条件时，系统将从该node上移除之前调度的pod
+  * RequiredDuringSchedulingIgnoredDuringExection，类似RequiredDuringSchedulingRequiredExection，区别在于node不满足条件时，系统不一定从该node上移除之前调动的pod
+  * PreferredDuringSchdulingIgnoredDuringExection：满足条件的node优先调度，不满足的node不一定移除
+
+
+在当前版本中，需要在pod的metadata中设置nodeaffinity
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+    name: with-lables
+    nanotations:
+        scheduler.alpha.kubernetes.io/affinity
+        .......
+        
+        
+```
+
+## DaemonSet
+
+每个node上只运行一个的特殊pod
+
+```yaml
+apiVersions/v1beta1
+kind: DaemonSet
+metadata:
+    name: fluentd-cloud-logging
+    namespace: kube-system
+    labels:
+        k8s-app: fluentd-cloud-logging
+    spec:
+        template:
+            metadata:
+                namespace: kube-system
+            labels:
+                k8s-app: fluentd-cloud-logging
+            spec:
+                container:
+                  - name: fluentd-cloud-logging
+                    image: fluentd-elasticsearch:1.17
+                    resource:
+                        limits: 
+                            cpu: 100m
+                            memory: 200Mi
+                    env:
+                      - name: FLURNTD_ARGS
+                        value: -q
+                    volumeMounts:
+                      - name: varlog
+                        mountPath: /var/logging
+                        readOnly: false
+                      - name: varlog
+                        mountPath: /var/log
+                        readOnly: false
+                Volumes:
+                  - name: containers
+                    hostpath:
+                        path: /var/lib/docker/containers
+                  - name: varlog
+                    hostpath:
+                        path: /var/log
+```
+
+## job
+
+* job Template Expansion: 一个job对应一个待处理的workitem，有几个workitem就产生几个独立的job，通常适合workitem数量较少、每个workitem需要处理大量的数据
+* queue with pod per work item，采用一个任务队列存放workitem，一个job对象作为消费者去完成，在这种模式下，job会启动N个pod，每个pod对应一个workitem
+* queue with variable pod count：采用一个任务队列存放workitem，一个job对象作为消费者去完成这些workitem，但job启动的pod数是可变的
+
+## 滚动升级
+
+```shell
+kubectl rolling-update redis-master -f redis-master-controller-v2.yaml
+```
 
