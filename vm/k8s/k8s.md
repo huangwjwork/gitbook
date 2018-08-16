@@ -65,4 +65,3 @@ docker run -d --name nginx -v `pwd`/nginx.conf:/etc/nginx/nginx.conf --net=conta
 docker run -d --name ghost --net=container:pause --ipc=container:pause --pid=container:pause ghost
 ```
 
-在nginx和

@@ -12,6 +12,7 @@
 * [知识库](knowledge.md)
     * [操作系统](OS/os.md)
         * [Linux](OS/linux/linux.md)
+          * [](OS/linux/d)
         * [windows](OS/win/windows.md)
         * [Unix](OS/unix/unix.md)
     * [数据库](db/db.md)
