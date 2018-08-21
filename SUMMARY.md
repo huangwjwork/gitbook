@@ -12,7 +12,7 @@
 * [知识库](knowledge.md)
     * [操作系统](OS/os.md)
         * [Linux](OS/linux/linux.md)
-          * [](OS/linux/d)
+            * [https认证逻辑](OS/linux/https认证逻辑.md)
         * [windows](OS/win/windows.md)
         * [Unix](OS/unix/unix.md)
     * [数据库](db/db.md)
@@ -36,10 +36,13 @@
     * [虚拟化](vm/vm.md)
         * [docker](vm/docker/docker.md)
         * [kubernetes](vm/k8s/k8s.md)
+            * [基于RBAC实现dashboard只读-view权限](vm/k8s/基于RBAC实现dashboard只读-view权限.md)
             * [kubernetes权威指南读书笔记](vm/k8s/notes.md)
                 * [基础概念](vm/k8s/基础概念.md)
                 * [pod详解](vm/k8s/pod详解.md)
                 * [service详解](vm/k8s/service详解.md)
+                * [核心原理](vm/k8s/kubernetes核心原理.md)
+                * [集群安全机制](vm/k8s/集群安全机制.md)
                 * [日志收集](vm/k8s/日志收集.md)
 
 -----
