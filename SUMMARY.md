@@ -44,6 +44,7 @@
                 * [核心原理](vm/k8s/kubernetes核心原理.md)
                 * [集群安全机制](vm/k8s/集群安全机制.md)
                 * [日志收集](vm/k8s/日志收集.md)
+            * [企业实践整理](vm/k8s/企业实践整理.md)
 
 -----
 * [瞎扯淡](chedan/chedan.md)
