@@ -22,6 +22,7 @@
         * [zabbix](monitor/zabbix/zabbix.md)
             * [python实现zabbix告警推送钉钉](monitor/zabbix/python实现zabbix告警推送钉钉.md)
         * [prometheus](monitor/prometheus/prometheus.md)
+            * [functions函数](monitor/prometheus/functions.md)
         * [ELK](monitor/elk/elk.md)
     * [web服务器](web/web.md)
         * [nginx](web/nginx/nginx.md)
